@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+{% seo %}
+{% if page.anahtar_kelimeler and page.anahtar_kelimeler.size > 0 %}<meta name="keywords" content="{{ page.anahtar_kelimeler | join: ', ' | escape }}">{% endif %}
+<meta name="theme-color" content="#5e1f2a">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/ikon/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v={{ site.time | date: '%Y%m%d%H%M' }}">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Mear Home","url":"{{ site.url }}/","logo":"{{ site.url }}/assets/ikon/icon-512.png","email":{{ site.data.ayarlar.eposta | jsonify }},"sameAs":[{{ site.data.ayarlar.instagram_url | jsonify }},{{ site.data.ayarlar.trendyol_magaza | jsonify }},{{ site.data.ayarlar.hepsiburada_magaza | jsonify }}]}
+</script>

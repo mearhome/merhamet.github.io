@@ -1,0 +1,58 @@
+# ⚠️ Bu dosya sitenin teknik ayarıdır. Pages CMS'ten değiştirmeyin.
+title: Mear Home
+tagline: Hikâyeli Tütsü Setleri ve Koku Günlüğü
+description: "Her akşamın bir kokusu, her kutunun bir hikâyesi var. Kış Masalı'ndan Sessiz Sabah'a beş hikâyeli tütsü seti, Aslan kutuları ve Tüti'nin Koku Günlüğü."
+url: "https://www.mearhome.com"
+baseurl: ""
+lang: tr_TR
+locale: tr_TR
+timezone: Europe/Istanbul
+logo: /assets/ikon/icon-512.png
+image: /gorseller/site/og-mearhome.jpg
+social:
+  name: Mear Home
+  links:
+    - https://www.instagram.com/mearhome/
+    - https://www.trendyol.com/magaza/mear-home-ev-dekorasyon-urunleri-m-1120687
+    - https://www.hepsiburada.com/magaza/mear-home
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+permalink: /koku-gunlugu/:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  urunler:
+    output: false
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: yazi }
+  - scope: { path: "setler" }
+    values: { layout: set }
+  - scope: { path: "sayfalar" }
+    values: { layout: sayfa }
+  - scope: { path: "sayfalar/kvkk.md" }
+    values: { sitemap: false }
+  - scope: { path: "sayfalar/cerez-politikasi.md" }
+    values: { sitemap: false }
+  - scope: { path: "gorseller" }
+    values: { sitemap: false }
+
+exclude:
+  - _arac
+  - _onizleme
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - DNS_Talimati.md
+  - Yonetim_Rehberi.md
+  - .pages.yml
+include:
+  - .well-known

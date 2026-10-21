@@ -1,0 +1,62 @@
+# Ana sayfa metinleri (Pages CMS: "Ana Sayfa Metinleri")
+duyuru:
+  goster: true
+  metin: "❄️ Yılbaşı kutuları hazır · Hikâye kartıyla, kurdeleli sunumla gelir"
+  link_yazi: "Kutuları gör →"
+  link: /hediye-kutulari/
+hero:
+  etiket: "TÜTİ'NİN KOKU GÜNLÜĞÜ"
+  baslik: "Her akşamın bir kokusu, her kutunun bir hikâyesi var."
+  metin1: "Soba üstünde kıvrılan portakal kabuğu. Ütülü çarşafın kokusu. Anneannenin hiç kapanmayan kapısı. Balkonda açan yasemin. Herkes uyurken demlenen ilk çay."
+  metin2: "Mear Home, Türk evlerinin bu küçük akşamlarını kutuya koyar; sen sadece bir çubuk yakarsın."
+  buton1_yazi: "Bu akşamın hikâyesini seç →"
+  buton1_link: /setler/
+  buton2_yazi: "Tüti'yi tanı"
+  buton2_link: /tuti/
+  alt_not: "Siparişler Trendyol ve Hepsiburada üzerinden, güvenle."
+  gorsel: /gorseller/site/hero-bes-hikaye.webp
+setler:
+  etiket: "BEŞ AKŞAM, BEŞ HİKÂYE"
+  baslik: "Bu akşam hangisi sensin?"
+  metin: "Beş set, beş ayrı akşam. Her birinde iki ya da üç koku, ahşap bir kayık ve o akşamı anlatan bir hikâye kartı var."
+  alt_not: "Her setin iki boyu var: **Orta** (40 çubuk, 2 koku) ve **Premium** (60 çubuk, 3 koku, kurdeleli sunum)."
+hediye:
+  etiket: "YILBAŞI İÇİN"
+  baslik: "Açıldığı akşam başlayan hediyeler"
+  metin: "Bazı hediyeler paketten çıkınca biter. Bunlar, ilk çubuk yandığında başlar."
+tuti:
+  etiket: "TANIŞIN"
+  baslik: "Merhaba, ben Tüti."
+  gorsel: /gorseller/site/tuti.webp
+  paragraflar:
+    - "Ben bir kutudan çıktım. Daha doğrusu, o kutuda yakılan ilk çubuğun ilk dumanından."
+    - "Başımda altın bir lotus, kafamda bir sürü soru var: Neden bazı kokular insanı çocukluğuna götürür? Neden anneannenin evi hep portakal kokar? Bekçi Aslan'ın nefesi neden aşağı akar?"
+    - "Her akşam başka bir eve misafir oluyorum: Defne'nin şehir akşamlarına, Lâl'in sessiz sabahlarına, Bekçi Aslan'ın köşesine. Hayalim küçük ama inatçı: **her evin bir akşam hikâyesi olsun.**"
+  buton_yazi: "Tüti'yi ve arkadaşlarını tanı →"
+blog:
+  etiket: "KOKU GÜNLÜĞÜ"
+  baslik: "Tüti'nin defterinden"
+  metin: "Hikâyeler, küçük rehberler ve \"bu akşam hangi koku?\" sorusunun cevapları."
+nereden:
+  etiket: "NEREDEN ALINIR?"
+  baslik: "Mear Home'u nereden alabilirim?"
+  metin: "Siparişlerin, kargon ve iaden bildiğin güvenli yerlerden yürür. İki mağazamızda da tüm setler ve hediye kutuları var."
+  trendyol_metin: "Mağazamızı takip edenlere özel kupon da var."
+  hepsiburada_metin: "Mear Home mağazası, hikâyeli setler ve hediye kutuları."
+instagram:
+  etiket: "@MEARHOME"
+  baslik: "Dizinin devamı Instagram'da"
+  metin: "Her akşam yeni bir bölüm; bir sonraki bölümü sen seçiyorsun. Sezon finalinde en güzel dört takipçi hikâyesi Dört Hikâye kutusunun kartlarına basılacak."
+  dm_notu: "DM'den **HİKÂYE** yaz, sana en uygun akşamı birlikte seçelim."
+  gorseller:
+    - /gorseller/site/instagram-1.webp
+    - /gorseller/site/instagram-2.webp
+    - /gorseller/site/instagram-3.webp
+    - /gorseller/site/instagram-4.webp
+    - /gorseller/site/instagram-5.webp
+    - /gorseller/site/instagram-6.webp
+bulten:
+  etiket: "TÜTİ'NİN MEKTUPLARI"
+  baslik: "Ayda iki mektup, bir sürü hikâye"
+  metin: "Yeni bölüm, mevsimin kokusu, takipçi hikâyelerinden seçmeler ve yeni kutular duyulmadan önce sende. Reklam yağmuru yok, sadece mektup."
+  yakinda_notu: "Bülten çok yakında. Şimdilik haber almak istersen bize e-posta at, listeye ilk sen gir."

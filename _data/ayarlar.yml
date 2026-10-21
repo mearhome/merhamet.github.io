@@ -1,0 +1,13 @@
+# Site genel ayarları (Pages CMS: "Site Ayarları")
+eposta: info@mearhome.com # TODO: Bu kutunun GoDaddy'de açık olduğunu doğrulayın
+instagram_kullanici: mearhome
+instagram_url: https://www.instagram.com/mearhome/
+trendyol_magaza: https://www.trendyol.com/magaza/mear-home-ev-dekorasyon-urunleri-m-1120687
+hepsiburada_magaza: https://www.hepsiburada.com/magaza/mear-home
+sirket_unvani: "TODO: Şirket unvanı"
+sirket_adres: "TODO: Açık adres"
+vergi_bilgisi: "TODO: Vergi dairesi ve numarası"
+mersis_no: ""
+telefon: ""
+bulten_acik: false
+yasal_not: "Tütsü bir ortam kokusu ürünüdür; herhangi bir sağlık, tedavi veya manevi etki iddiası taşımaz. Yanan tütsüyü gözetimsiz bırakmayın."

@@ -1,0 +1,11 @@
+{% assign a = site.data.anasayfa.duyuru %}
+<a class="atla" href="#ana">İçeriğe geç</a>
+{% if a.goster %}<div class="promo">{{ a.metin }}{% if a.link %} · <a href="{{ a.link }}">{{ a.link_yazi }}</a>{% endif %}</div>{% endif %}
+<header class="ust"><div class="wrap">
+<a class="logo" href="/" aria-label="Mear Home ana sayfa"><svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#c9a24a" stroke-width="1.6" aria-hidden="true"><path d="M17 24C13 18 13 9 17 2c4 7 4 16 0 22z"/><path d="M17 24C11 21 7 15 7 8c5 2 9 8 10 16z"/><path d="M17 24c6-3 10-9 10-16-5 2-9 8-10 16z"/><path d="M17 24C10 24 3 20 1 14c6-1 12 3 16 10z"/><path d="M17 24c7 0 14-4 16-10-6-1-12 3-16 10z"/></svg>mear home</a>
+<nav aria-label="Ana menü"><ul class="menu" id="menu">
+{% for m in site.data.menu %}<li><a href="{{ m.link }}"{% if page.url == m.link or page.url contains m.link and m.link != '/' %} aria-current="page"{% endif %}>{{ m.ad }}</a></li>{% endfor %}
+</ul></nav>
+<a class="btn altin kucuk navbtn" href="/#nereden-alinir">Nereden alırım?</a>
+<button class="menu-dugme" aria-controls="menu" aria-expanded="false" aria-label="Menüyü aç">☰</button>
+</div></header>

@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="sayfa-bas"><div class="wrap"><div class="yol"><a href="/">Ana Sayfa</a> › Tüti'yi Tanı</div><div class="etiket">{{ page.etiket }}</div><h1>{{ page.baslik }}</h1><p>{{ page.giris }}</p></div></div>
+<section class="tuti-blok" style="background:var(--krem)"><div class="wrap grid">
+<img class="yuvarlak" src="/gorseller/site/tuti.webp" alt="Tüti" width="800" height="800" decoding="async">
+<div class="metin">{{ content }}</div></div></section>
+<section style="background:var(--krem2)"><div class="wrap"><div class="bas"><div class="etiket">KARAKTERLER</div><h2>Tüti'nin dünyası</h2></div>
+<div class="grid-4">{% for k in page.karakterler %}<div class="karakter">{% if k.gorsel and k.gorsel != "" %}<img src="{{ k.gorsel }}" alt="{{ k.ad }}" width="480" height="640" loading="lazy" decoding="async">{% endif %}<div><h3>{{ k.ad }}</h3><p>{{ k.metin }}</p></div></div>{% endfor %}</div>
+<p class="not">{{ page.alt_not }}</p></div></section>

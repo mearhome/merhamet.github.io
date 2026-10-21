@@ -1,0 +1,366 @@
+# Pages CMS ayar dosyası (https://pagescms.org)
+# Bu dosya yönetim panelindeki menüleri ve form alanlarını belirler.
+# Panelden DEĞİŞTİRMEYİN; yanlış bir satır paneli açılmaz hale getirebilir.
+
+media:
+  - name: gorseller
+    label: Görseller
+    input: gorseller
+    output: /gorseller
+    categories: [image]
+    rename: safe
+
+content:
+  # ───────────────────────── BLOG ─────────────────────────
+  - name: blog
+    label: Blog Yazıları
+    description: Koku Günlüğü yazıları. Yeni yazı için sağ üstteki "Ekle" düğmesine bas.
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, kategori, date]
+      sort: [date, title]
+      default: { sort: date, order: desc }
+    fields:
+      - name: title
+        label: Başlık
+        type: string
+        required: true
+      - name: description
+        label: Kısa açıklama (Google'da görünen 1-2 cümle)
+        type: text
+        required: true
+        options: { maxlength: 170 }
+      - name: date
+        label: Yayın tarihi
+        description: Bugünün tarihi veya daha eski bir tarih seç. İleri bir tarih seçersen yazı o güne kadar görünmez.
+        type: date
+        required: true
+        options: { format: yyyy-MM-dd }
+      - name: kategori
+        label: Kategori
+        type: select
+        options:
+          values: [Rehberler, Bölümler, Hediye]
+      - name: dizi
+        label: Dizi bilgisi (isteğe bağlı)
+        description: "Örnek: Tüti'nin Koku Günlüğü · Sezon 1 · Bölüm 3. Boş bırakabilirsin."
+        type: string
+      - name: image
+        label: Kapak görseli
+        description: Yatay görsel önerilir (4:3). Listelerde ve paylaşımlarda bu görünür.
+        type: image
+      - name: kapak_alt
+        label: Kapak görselinin kısa tarifi
+        description: "Görseli göremeyenler ve Google için. Örnek: Ahşap kayıkta yanan lavanta tütsüsü"
+        type: string
+      - name: anahtar_kelimeler
+        label: Anahtar kelimeler
+        description: Her satıra bir arama ifadesi.
+        type: string
+        list: true
+      - name: body
+        label: Yazı
+        type: rich-text
+        options: { format: markdown, media: gorseller }
+
+  # ───────────────────────── ÜRÜNLER ─────────────────────────
+  - name: urunler
+    label: Ürünler
+    description: Sitedeki her ürün kartı. Link, metin ve görselleri buradan değiştir.
+    type: collection
+    path: _urunler
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, set, varyant, aktif]
+      sort: [set, sira, title]
+      default: { sort: set, order: asc }
+    fields:
+      - name: title
+        label: Ürün adı
+        type: string
+        required: true
+      - name: set
+        label: Hangi sayfada görünsün?
+        type: select
+        required: true
+        options:
+          values:
+            - { value: kis-masali, label: "Kış Masalı seti" }
+            - { value: gece-ninnisi, label: "Gece Ninnisi seti" }
+            - { value: bereket-sofrasi, label: "Bereket Sofrası seti" }
+            - { value: yasemin-aksami, label: "Yasemin Akşamı seti" }
+            - { value: sessiz-sabah, label: "Sessiz Sabah seti" }
+            - { value: hediye-kutulari, label: "Hediye Kutuları" }
+            - { value: klasik, label: "Klasik Setler (3'lü, 5'li, 7'li)" }
+            - { value: tek-kokular, label: "Tek Kokular" }
+      - name: varyant
+        label: Boy / tür
+        type: select
+        required: true
+        options:
+          values: [Orta, Premium, Kutu, Klasik, Tek]
+      - name: kisa_aciklama
+        label: Kısa açıklama
+        type: text
+      - name: icerik
+        label: Kutunun içinde neler var?
+        description: Her satıra bir madde.
+        type: string
+        list: true
+      - name: gorseller
+        label: Ürün görselleri
+        description: İlk görsel kartta önce görünür. Sürükleyerek sırala.
+        type: image
+        options: { multiple: true }
+      - name: trendyol_url
+        label: Trendyol ürün linki
+        description: Boş kalırsa düğme Trendyol mağaza sayfasına gider.
+        type: string
+      - name: hepsiburada_url
+        label: Hepsiburada ürün linki
+        description: Boş kalırsa düğme Hepsiburada mağaza sayfasına gider.
+        type: string
+      - name: aktif
+        label: Sitede göster
+        type: boolean
+        default: true
+      - name: sira
+        label: Sıra (küçük sayı önce gelir)
+        type: number
+
+  # ───────────────────────── SETLER ─────────────────────────
+  - name: setler
+    label: Set Hikâyeleri
+    description: Beş hikâyeli setin sayfa metinleri. Ürün linkleri "Ürünler" bölümünde.
+    type: collection
+    path: setler
+    format: yaml-frontmatter
+    operations: { create: false, delete: false, rename: false }
+    view:
+      primary: baslik
+      fields: [baslik, sira]
+      sort: [sira]
+      default: { sort: sira, order: asc }
+    fields:
+      - { name: layout, label: "Şablon", type: string, hidden: true, default: set }
+      - { name: set_kodu, label: "Set kodu", type: string, hidden: true }
+      - { name: permalink, label: "Adres", type: string, hidden: true }
+      - name: baslik
+        label: Set adı
+        type: string
+        required: true
+      - name: title
+        label: Google başlığı
+        type: string
+      - name: description
+        label: Google açıklaması
+        type: text
+        options: { maxlength: 170 }
+      - name: emoji
+        label: Emoji
+        type: string
+      - name: alinti
+        label: Tek cümlelik alıntı
+        type: string
+      - name: image
+        label: Kart görseli
+        type: image
+      - name: kokular
+        label: Kokular ve anları
+        type: object
+        list: true
+        fields:
+          - { name: ad, label: "Koku", type: string }
+          - { name: an, label: "Hangi anı anlatıyor?", type: text }
+      - name: kart_cumlesi
+        label: Hikâye kartında yazan cümle
+        type: text
+      - name: kime
+        label: Kime hediye?
+        type: text
+      - name: ilgili_yazilar
+        label: İlgili yazıların adresleri
+        description: "Örnek: /koku-gunlugu/geri-akis-tutsu-nedir/"
+        type: string
+        list: true
+      - name: sira
+        label: Sıra
+        type: number
+      - name: body
+        label: Setin hikâyesi
+        type: rich-text
+        options: { format: markdown, media: gorseller }
+
+  # ───────────────────────── ANA SAYFA ─────────────────────────
+  - name: anasayfa
+    label: Ana Sayfa Metinleri
+    type: file
+    path: _data/anasayfa.yml
+    format: yaml
+    fields:
+      - name: duyuru
+        label: En üstteki duyuru şeridi
+        type: object
+        fields:
+          - { name: goster, label: "Göster", type: boolean }
+          - { name: metin, label: "Metin", type: string }
+          - { name: link_yazi, label: "Link yazısı", type: string }
+          - { name: link, label: "Link adresi", type: string }
+      - name: hero
+        label: Karşılama bölümü (en üst)
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Büyük başlık", type: string }
+          - { name: metin1, label: "Paragraf 1", type: text }
+          - { name: metin2, label: "Paragraf 2", type: text }
+          - { name: buton1_yazi, label: "1. düğme yazısı", type: string }
+          - { name: buton1_link, label: "1. düğme adresi", type: string }
+          - { name: buton2_yazi, label: "2. düğme yazısı", type: string }
+          - { name: buton2_link, label: "2. düğme adresi", type: string }
+          - { name: alt_not, label: "Alt küçük not", type: string }
+          - { name: gorsel, label: "Büyük görsel", type: image }
+      - name: setler
+        label: "\"Bu akşam hangisi sensin?\" bölümü"
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+          - { name: alt_not, label: "Alt not", type: text }
+      - name: hediye
+        label: Hediye kutuları bölümü
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+      - name: tuti
+        label: "\"Merhaba, ben Tüti\" bölümü"
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: gorsel, label: "Tüti görseli", type: image }
+          - { name: paragraflar, label: "Paragraflar", type: text, list: true }
+          - { name: buton_yazi, label: "Düğme yazısı", type: string }
+      - name: blog
+        label: Koku Günlüğü bölümü
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+      - name: nereden
+        label: "\"Nereden alabilirim?\" bölümü"
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+          - { name: trendyol_metin, label: "Trendyol kutusu metni", type: string }
+          - { name: hepsiburada_metin, label: "Hepsiburada kutusu metni", type: string }
+      - name: instagram
+        label: Instagram bölümü
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+          - { name: dm_notu, label: "Alt not", type: string }
+          - name: gorseller
+            label: Instagram görselleri (6 adet önerilir)
+            type: image
+            options: { multiple: { max: 6 } }
+      - name: bulten
+        label: Bülten bölümü
+        type: object
+        fields:
+          - { name: etiket, label: "Küçük üst yazı", type: string }
+          - { name: baslik, label: "Başlık", type: string }
+          - { name: metin, label: "Metin", type: text }
+          - { name: yakinda_notu, label: "Alt not", type: text }
+
+  # ───────────────────────── SAYFALAR ─────────────────────────
+  - name: sayfalar
+    label: Sayfalar
+    description: Tüti'yi Tanı, Nasıl Kullanılır, İletişim, KVKK gibi sabit sayfalar.
+    type: collection
+    path: sayfalar
+    format: yaml-frontmatter
+    operations: { create: false, delete: false, rename: false }
+    view:
+      primary: baslik
+      fields: [baslik, permalink]
+      sort: [sira]
+      default: { sort: sira, order: asc }
+    fields:
+      - { name: layout, label: "Şablon", type: string, hidden: true, default: sayfa }
+      - { name: permalink, label: "Sayfa adresi", type: string, readonly: true }
+      - { name: urun_seti, label: "Ürün grubu", type: string, hidden: true }
+      - { name: izgara, label: "Izgara", type: number, hidden: true }
+      - { name: ust_baslik, label: "Üst sayfa", type: string, hidden: true }
+      - { name: ust_link, label: "Üst sayfa adresi", type: string, hidden: true }
+      - { name: sira, label: "Sıra", type: number, hidden: true }
+      - name: baslik
+        label: Sayfa başlığı
+        type: string
+        required: true
+      - name: etiket
+        label: Küçük üst yazı
+        type: string
+      - name: giris
+        label: Giriş cümlesi
+        type: text
+      - name: title
+        label: Google başlığı
+        type: string
+      - name: description
+        label: Google açıklaması
+        type: text
+        options: { maxlength: 170 }
+      - name: image
+        label: Paylaşım görseli
+        type: image
+      - name: karakterler
+        label: Karakterler (yalnızca Tüti'yi Tanı sayfası)
+        type: object
+        list: true
+        fields:
+          - { name: ad, label: "Ad", type: string }
+          - { name: metin, label: "Tanıtım", type: text }
+          - { name: gorsel, label: "Görsel", type: image }
+      - name: alt_not
+        label: Alt not (yalnızca Tüti'yi Tanı sayfası)
+        type: string
+      - name: body
+        label: Sayfa metni
+        type: rich-text
+        options: { format: markdown, media: gorseller }
+
+  # ───────────────────────── AYARLAR ─────────────────────────
+  - name: ayarlar
+    label: Site Ayarları
+    description: E-posta, Instagram, mağaza linkleri ve şirket bilgileri.
+    type: file
+    path: _data/ayarlar.yml
+    format: yaml
+    fields:
+      - { name: eposta, label: "E-posta adresi", type: string }
+      - { name: instagram_kullanici, label: "Instagram kullanıcı adı (@ olmadan)", type: string }
+      - { name: instagram_url, label: "Instagram linki", type: string }
+      - { name: trendyol_magaza, label: "Trendyol mağaza linki", type: string }
+      - { name: hepsiburada_magaza, label: "Hepsiburada mağaza linki", type: string }
+      - { name: sirket_unvani, label: "Şirket unvanı", type: string }
+      - { name: sirket_adres, label: "Açık adres", type: text }
+      - { name: vergi_bilgisi, label: "Vergi dairesi ve numarası", type: string }
+      - { name: mersis_no, label: "MERSİS no (varsa)", type: string }
+      - { name: telefon, label: "Telefon (isteğe bağlı)", type: string }
+      - { name: bulten_acik, label: "Bülten formu açık mı?", type: boolean, hidden: true }
+      - { name: yasal_not, label: "Alt bilgi yasal notu", type: text, readonly: true }

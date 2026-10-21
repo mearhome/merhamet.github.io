@@ -1,0 +1,5 @@
+{% assign s = site.data.ayarlar %}{% assign u = include.u %}
+<div class="alis">
+{% if u.trendyol_url and u.trendyol_url != "" %}<a class="btn ty" href="{{ u.trendyol_url }}" target="_blank" rel="noopener">Trendyol'da al</a>{% else %}<a class="btn ty" href="{{ s.trendyol_magaza }}" target="_blank" rel="noopener">Trendyol mağazası</a>{% endif %}
+{% if u.hepsiburada_url and u.hepsiburada_url != "" %}<a class="btn hb" href="{{ u.hepsiburada_url }}" target="_blank" rel="noopener">Hepsiburada'da al</a>{% else %}<!-- TODO: HB ürün linki eklenince ürüne gider --><a class="btn hb" href="{{ s.hepsiburada_magaza }}" target="_blank" rel="noopener">Hepsiburada'da al</a>{% endif %}
+</div>

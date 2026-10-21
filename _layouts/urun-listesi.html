@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{% assign urunler = site.urunler | where: "set", page.urun_seti | where: "aktif", true | sort: "sira" %}
+<div class="sayfa-bas"><div class="wrap">
+<div class="yol"><a href="/">Ana Sayfa</a> › {% if page.ust_baslik and page.ust_baslik != "" %}<a href="{{ page.ust_link }}">{{ page.ust_baslik }}</a> › {% endif %}{{ page.baslik }}</div>
+{% if page.etiket and page.etiket != "" %}<div class="etiket">{{ page.etiket }}</div>{% endif %}
+<h1>{{ page.baslik }}</h1>{% if page.giris and page.giris != "" %}<p>{{ page.giris }}</p>{% endif %}
+</div></div>
+<div class="icerik"><div class="wrap">
+<div class="{% assign iz = page.izgara | plus: 0 %}{% if iz == 4 %}grid-4{% else %}grid-3{% endif %}">{% for u in urunler %}{% include urun.html u=u %}{% endfor %}</div>
+{% assign c = content | strip %}{% if c != "" %}<div class="dar metin" style="padding:40px 0 0">{{ content }}</div>{% endif %}
+</div></div>
+{% for u in urunler %}{% include urun-schema.html u=u %}{% endfor %}
