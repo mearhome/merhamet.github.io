@@ -1,0 +1,22 @@
+---
+layout: default
+---
+{% assign urunler = site.urunler | where: "set", page.set_kodu | where: "aktif", true | sort: "sira" %}
+<div class="sayfa-bas"><div class="wrap">
+<div class="yol"><a href="/">Ana Sayfa</a> › <a href="/setler/">Setler</a> › {{ page.baslik }}</div>
+<div class="etiket">HİKÂYELİ TÜTSÜ SETİ</div>
+<h1>{{ page.emoji }} {{ page.baslik }}</h1>
+<p class="q">"{{ page.alinti }}"</p>
+</div></div>
+<div class="icerik"><div class="wrap">
+<div class="dar metin" style="padding:0">{{ content }}</div>
+<div class="dar" style="padding:0"><h2 style="font-size:30px;color:var(--bordo);margin:40px 0 6px">Kokular ve anları</h2></div>
+<div class="kokular" style="max-width:980px;margin-left:auto;margin-right:auto">{% for k in page.kokular %}<div><b>{{ k.ad }}</b>{{ k.an }}</div>{% endfor %}</div>
+<div class="bas" style="margin:60px auto 10px"><h2 style="font-size:34px">İki boy, aynı hikâye</h2><p>Orta: 40 çubuk, 2 koku. Premium: 60 çubuk, 3 koku ve kurdeleli sunum.</p></div>
+<div class="set-kutu">{% for u in urunler %}{% include urun.html u=u %}{% endfor %}</div>
+<div class="kart-cumle"><div class="etiket" style="color:var(--altin)">HİKÂYE KARTINDA YAZAN</div><div class="q">"{{ page.kart_cumlesi }}"</div><small>— Mear Home</small></div>
+<div class="dar metin" style="padding:0"><h2>Kime hediye?</h2><p>{{ page.kime }}</p>
+<h2>İlgili okumalar</h2><ul>{% for iu in page.ilgili_yazilar %}{% assign yp = site.posts | where: "url", iu | first %}{% if yp %}<li><a href="{{ yp.url }}">{{ yp.title }}</a></li>{% endif %}{% endfor %}<li><a href="/nasil-kullanilir/">Tütsü nasıl kullanılır?</a></li></ul>
+<p><a href="/setler/">← Tüm setlere dön</a></p></div>
+</div></div>
+{% for u in urunler %}{% include urun-schema.html u=u %}{% endfor %}

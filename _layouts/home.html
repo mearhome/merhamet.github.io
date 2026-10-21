@@ -1,0 +1,60 @@
+---
+layout: default
+---
+{% assign h = site.data.anasayfa %}{% assign s = site.data.ayarlar %}
+<section class="hero" style="padding:0"><div class="txt">
+<div class="etiket">{{ h.hero.etiket }}</div>
+<h1>{{ h.hero.baslik }}</h1>
+<p>{{ h.hero.metin1 }}</p><p>{{ h.hero.metin2 }}</p>
+<div class="btns"><a class="btn altin" href="{{ h.hero.buton1_link }}">{{ h.hero.buton1_yazi }}</a><a class="btn cizgi" href="{{ h.hero.buton2_link }}">{{ h.hero.buton2_yazi }}</a></div>
+<small>{{ h.hero.alt_not }}</small>
+</div><div class="img" role="img" aria-label="Beş hikâyeli tütsü seti, ahşap kayıklar ve hikâye kartları" style="background-image:url('{{ h.hero.gorsel }}')"></div></section>
+
+<section><div class="wrap">
+<div class="bas"><div class="etiket">{{ h.setler.etiket }}</div><h2>{{ h.setler.baslik }}</h2><p>{{ h.setler.metin }}</p></div>
+<div class="kartlar">
+{% assign setler = site.pages | where: "layout", "set" | sort: "sira" %}{% for st in setler %}
+{% assign notalar = "" %}{% for k in st.kokular %}{% assign kn = k.ad | split: " (" | first %}{% assign notalar = notalar | append: kn %}{% unless forloop.last %}{% assign notalar = notalar | append: " · " %}{% endunless %}{% endfor %}
+<a class="kart" href="{{ st.url }}"><img src="{{ st.image }}" alt="{{ st.baslik }} hikâyeli tütsü seti" width="1000" height="1000" loading="lazy" decoding="async"><div class="ic"><h3>{{ st.emoji }} {{ st.baslik }}</h3><div class="q">"{{ st.alinti }}"</div><div class="notalar">{{ notalar }}</div><div class="an">{{ st.content | strip_html | truncatewords: 16 }}</div><div class="oku">Hikâyeyi oku →</div></div></a>
+{% endfor %}
+</div>
+<p class="not">{{ h.setler.alt_not | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+</div></section>
+
+<section class="hediye"><div class="wrap">
+<div class="bas"><div class="etiket">{{ h.hediye.etiket }}</div><h2>{{ h.hediye.baslik }}</h2><p>{{ h.hediye.metin }}</p></div>
+<div class="hk">
+{% assign kutular = site.urunler | where: "set", "hediye-kutulari" | where: "aktif", true | sort: "sira" %}{% for u in kutular %}
+<div class="kart"><img src="{{ u.gorseller[0] }}" alt="{{ u.title | escape }}" width="1000" height="1000" loading="lazy" decoding="async"><div class="ic"><h3>{{ u.title }}</h3><div class="an">{{ u.kisa_aciklama }}</div>{% include satin-al.html u=u %}</div></div>
+{% endfor %}
+</div>
+<div class="linkler"><a href="/koku-gunlugu/yilbasi-hikayeli-hediye-fikirleri/">Kime hangi kutu? Yılbaşı hediye rehberi →</a><a href="/koku-gunlugu/geri-akis-tutsu-nedir/">Duman neden aşağı akar? →</a></div>
+<p class="not" style="color:#a89c8a">Güncel fiyatı ve kargo bilgisini pazaryerinde görebilirsin.</p>
+</div></section>
+
+<section class="tuti-blok"><div class="wrap grid">
+<img class="yuvarlak" src="{{ h.tuti.gorsel }}" alt="Mear Home'un maskotu Tüti" width="800" height="800" loading="lazy" decoding="async">
+<div><div class="etiket">{{ h.tuti.etiket }}</div><h2>{{ h.tuti.baslik }}</h2>
+{% for p in h.tuti.paragraflar %}{{ p | markdownify }}{% endfor %}
+<a class="btn cizgi bordo" style="margin-top:10px" href="/tuti/">{{ h.tuti.buton_yazi }}</a></div>
+</div></section>
+
+<section><div class="wrap">
+<div class="bas"><div class="etiket">{{ h.blog.etiket }}</div><h2>{{ h.blog.baslik }}</h2><p>{{ h.blog.metin }}</p></div>
+<div class="blog">{% for p in site.posts limit:3 %}{% include yazi-karti.html p=p %}{% endfor %}</div>
+<div style="text-align:center;margin-top:36px"><a class="btn cizgi bordo" href="/koku-gunlugu/">Tüm yazılar →</a></div>
+</div></section>
+
+<section class="nereden" id="nereden-alinir"><div class="wrap">
+<div class="bas"><div class="etiket">{{ h.nereden.etiket }}</div><h2>{{ h.nereden.baslik }}</h2><p>{{ h.nereden.metin }}</p></div>
+<div class="nk"><div class="t"><h3>Trendyol</h3><p>{{ h.nereden.trendyol_metin }}</p><a class="btn tyb" href="{{ s.trendyol_magaza }}" target="_blank" rel="noopener">Trendyol mağazamıza git →</a></div>
+<div class="h"><h3>Hepsiburada</h3><p>{{ h.nereden.hepsiburada_metin }}</p><a class="btn hbb" href="{{ s.hepsiburada_magaza }}" target="_blank" rel="noopener">Hepsiburada mağazamıza git →</a></div></div>
+</div></section>
+
+<section class="insta" style="background:var(--krem2)"><div class="wrap">
+<div class="bas"><div class="etiket">{{ h.instagram.etiket }}</div><h2>{{ h.instagram.baslik }}</h2><p>{{ h.instagram.metin }}</p></div>
+<div class="grid">{% for g in h.instagram.gorseller %}<a href="{{ s.instagram_url }}" target="_blank" rel="noopener"><img src="{{ g }}" alt="Tüti'nin Koku Günlüğü Instagram gönderisi {{ forloop.index }}" width="540" height="675" loading="lazy" decoding="async"></a>{% endfor %}</div>
+<div class="alt"><a class="btn altin" href="{{ s.instagram_url }}" target="_blank" rel="noopener">Instagram'da takip et →</a><p>{{ h.instagram.dm_notu | markdownify | remove: '<p>' | remove: '</p>' }}</p></div>
+</div></section>
+
+{% include bulten.html %}

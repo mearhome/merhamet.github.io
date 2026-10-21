@@ -1,0 +1,5 @@
+---
+layout: default
+---
+<div class="sayfa-bas"><div class="wrap"><div class="yol"><a href="/">Ana Sayfa</a> › {{ page.baslik | default: page.title }}</div>{% if page.etiket and page.etiket != "" %}<div class="etiket">{{ page.etiket }}</div>{% endif %}<h1>{{ page.baslik | default: page.title }}</h1>{% if page.giris and page.giris != "" %}<p>{{ page.giris }}</p>{% endif %}</div></div>
+<div class="icerik"><div class="dar metin">{{ content }}</div></div>

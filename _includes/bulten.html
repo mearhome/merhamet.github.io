@@ -1,0 +1,10 @@
+{% assign b = site.data.anasayfa.bulten %}{% assign s = site.data.ayarlar %}
+<section class="bulten"><div class="wrap">
+<div class="etiket">{{ b.etiket }}</div><h2>{{ b.baslik }}</h2><p>{{ b.metin }}</p>
+{% if s.bulten_acik %}<!-- Bülten servisi bağlanınca form buraya --> {% endif %}
+<form class="form" onsubmit="return false" aria-describedby="bulten-not">
+<input type="text" placeholder="Adın" disabled aria-label="Adın"><input type="email" placeholder="E-posta adresin" disabled aria-label="E-posta adresin">
+<a class="btn altin" href="mailto:{{ s.eposta }}?subject=T%C3%BCti%27nin%20Mektuplar%C4%B1%20listesine%20ekle">Yakında · e-postayla haber al</a>
+</form>
+<div class="kvkk" id="bulten-not">{{ b.yakinda_notu }} <a href="/kvkk/">KVKK Aydınlatma Metni</a></div>
+</div></section>

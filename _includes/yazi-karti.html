@@ -1,0 +1,2 @@
+{% assign p = include.p %}
+<a class="kart" href="{{ p.url }}"><img src="{{ p.image }}" alt="{{ p.kapak_alt | default: p.title | escape }}" width="1200" height="900" loading="lazy" decoding="async"><div class="ic"><div class="tur">{% if p.dizi and p.dizi != "" %}{{ p.dizi | split: '·' | last | strip }}{% else %}{{ p.kategori }}{% endif %}</div><h3>{{ p.title }}</h3><div class="an" style="margin-top:8px">{{ p.description | truncate: 120 }}</div></div></a>

@@ -1,0 +1,6 @@
+---
+layout: default
+---
+<div class="sayfa-bas"><div class="wrap"><div class="yol"><a href="/">Ana Sayfa</a> › Koku Günlüğü</div><div class="etiket">{{ page.etiket }}</div><h1>{{ page.baslik }}</h1><p>{{ page.giris }}</p></div></div>
+<section style="padding-top:60px"><div class="wrap"><div class="blog">{% for p in site.posts %}{% include yazi-karti.html p=p %}{% endfor %}</div>
+{% assign c = content | strip %}{% if c != "" %}<div class="dar metin" style="padding:40px 0 0">{{ content }}</div>{% endif %}</div></section>

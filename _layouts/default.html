@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="tr">
+<head>
+{% include head.html %}
+{{ layout.ek_head }}{% if page.on_yukle %}<link rel="preload" as="image" href="{{ page.on_yukle }}">{% endif %}
+</head>
+<body>
+{% include header.html %}
+<main id="ana">
+{{ content }}
+</main>
+{% include footer.html %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% assign u = include.u %}
+<article class="urun" id="{{ u.slug }}">
+{% if u.gorseller.size > 1 %}<div class="galeri" tabindex="0" aria-label="{{ u.title | escape }} görselleri">{% for g in u.gorseller %}<img src="{{ g }}" alt="{{ u.title | escape }} · görsel {{ forloop.index }}" width="1000" height="1000" loading="lazy" decoding="async">{% endfor %}</div><div class="galeri-ipucu">← Kaydırarak {{ u.gorseller.size }} görseli gör →</div>
+{% elsif u.gorseller.size == 1 %}<img src="{{ u.gorseller[0] }}" alt="{{ u.title | escape }}" width="1000" height="1000" loading="lazy" decoding="async" style="aspect-ratio:1;object-fit:cover">{% endif %}
+<div class="ic">{% if u.varyant and u.varyant != "Kutu" and u.varyant != "Tek" and u.varyant != "Klasik" %}<div class="varyant">{{ u.varyant }}</div>{% endif %}
+<h3>{{ u.title }}</h3>
+{% if u.kisa_aciklama and u.kisa_aciklama != "" %}<p>{{ u.kisa_aciklama }}</p>{% endif %}
+{% if u.icerik and u.icerik.size > 0 %}<ul>{% for i in u.icerik %}<li>{{ i }}</li>{% endfor %}</ul>{% endif %}
+{% include satin-al.html u=u %}
+<div class="fiyat-not">Güncel fiyatı ve kargo bilgisini pazaryerinde görebilirsin.</div></div>
+</article>

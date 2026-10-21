@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% assign aylar = "Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık" | split: "," %}{% assign ay = page.date | date: "%-m" | minus: 1 %}
+<div class="sayfa-bas"><div class="dar"><div class="yol"><a href="/">Ana Sayfa</a> › <a href="/koku-gunlugu/">Koku Günlüğü</a> › {{ page.kategori }}</div>
+<div class="etiket">{% if page.dizi and page.dizi != "" %}{{ page.dizi }}{% else %}{{ page.kategori }}{% endif %}</div>
+<h1>{{ page.title }}</h1><div class="yazi-meta">{{ page.date | date: "%-d" }} {{ aylar[ay] }} {{ page.date | date: "%Y" }} · Tüti'nin defterinden</div></div></div>
+{% if page.image and page.image != "" %}<div class="yazi-kapak"><img src="{{ page.image }}" alt="{{ page.kapak_alt | default: page.title | escape }}" width="1200" height="900" fetchpriority="high" decoding="async"></div>{% endif %}
+<article class="icerik"><div class="dar metin">
+{{ content }}
+<div class="kart-cumle" style="margin-top:50px"><div class="etiket" style="color:var(--altin)">BU AKŞAMIN HİKÂYESİ</div><div class="q">Beş akşam, beş set. Seninki hangisi?</div><div class="alis" style="justify-content:center"><a class="btn altin" href="/setler/">Setleri keşfet</a><a class="btn cizgi" style="color:#fff" href="{{ site.data.ayarlar.instagram_url }}" target="_blank" rel="noopener">Sonraki bölümü sen seç</a></div></div>
+<p><a href="/koku-gunlugu/">← Koku Günlüğü'ne dön</a></p>
+</div></article>

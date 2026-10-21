@@ -1,0 +1,9 @@
+{% assign s = site.data.ayarlar %}
+<footer class="alt-bilgi"><div class="wrap">
+<div class="g"><div><h4>mear home</h4><p>Her kutunun bir hikâyesi var. Türk evlerinin akşamlarını kutuya koyuyoruz.</p></div>
+<div><h4>Keşfet</h4><ul><li><a href="/koku-gunlugu/">Koku Günlüğü</a></li><li><a href="/setler/">Setler</a></li><li><a href="/setler/klasik/">Klasik Setler</a></li><li><a href="/setler/tek-kokular/">Tek Kokular</a></li><li><a href="/hediye-kutulari/">Hediye Kutuları</a></li><li><a href="/nasil-kullanilir/">Nasıl Kullanılır</a></li></ul></div>
+<div><h4>Satın al</h4><ul><li><a href="{{ s.trendyol_magaza }}" target="_blank" rel="noopener">Trendyol Mağazamız</a></li><li><a href="{{ s.hepsiburada_magaza }}" target="_blank" rel="noopener">Hepsiburada Mağazamız</a></li></ul></div>
+<div><h4>Bizi takip et</h4><ul><li><a href="{{ s.instagram_url }}" target="_blank" rel="noopener">Instagram @{{ s.instagram_kullanici }}</a></li><li><a href="/tuti/">Tüti'yi Tanı</a></li><li><a href="/iletisim/">İletişim</a></li></ul></div></div>
+<div class="yasal"><span>© {{ site.time | date: '%Y' }} Mear Home · <a href="/kvkk/">KVKK Aydınlatma Metni</a> · <a href="/cerez-politikasi/">Çerez Politikası</a></span><span>{{ s.yasal_not }}</span></div>
+</div></footer>
+<script src="/assets/js/site.js" defer></script>
